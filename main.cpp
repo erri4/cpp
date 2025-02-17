@@ -18,12 +18,18 @@ namespace defaultns{
 
 	str input(str prompt = ""){
 		str input;
+		if (prompt != ""){
+			print(prompt);
+		}
 		std::getline(std::cin, input);
 		return (str)input;
 	}
 
 	int intput(str prompt = ""){
 		int input;
+		if (prompt != ""){
+			print(prompt);
+		}
 		std::cin >> input;
 		return input;
 	}
@@ -32,17 +38,15 @@ namespace defaultns{
 
 int main(){
 	using namespace defaultns;
+	print("Running shimirit program.");
 	str shimi;
-	print("write shimi hakadosh");
-	shimi = input();
+	shimi = input("write shimi hakadosh: ");
 	while (shimi != "shimi hakadosh"){
 		print("traitor!");
-		print("write shimi hakadosh");
-		shimi = input();
+		shimi = input("write shimi hakadosh: ");
 	}
 	int shimin;
-	print("how many times you want shimi? ");
-	shimin = intput();
+	shimin = intput("how many times you want shimi? ");
     for (int i = 0; i < shimin; i++){
         print("shimi hakadosh");
     }
