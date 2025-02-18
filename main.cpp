@@ -25,7 +25,7 @@ namespace defaultns{
 		return (str)input;
 	}
 
-	int intput(str prompt = ""){
+	char intput(str prompt = ""){
 		int input;
 		if (prompt != ""){
 			print(prompt);
