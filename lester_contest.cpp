@@ -1,7 +1,7 @@
-int pow(int base, int exponent){
+int pow(int b, int exponent){
     int r = 1;
     for (int i = 0; i < exponent; i++){
-        r *= base;
+        r *= b;
     }
     return r;
 }
