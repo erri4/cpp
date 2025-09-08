@@ -1,46 +1,75 @@
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
+#define print(data) (std::cout << data << '\n')
+#define input(var) (std::cin >> *var)
+
+typedef std::string str;
+typedef long long ll;
 using std::vector;
-using std::max;
-using std::cout;
-using std::cin;
-
-struct Project {
-    long long start, end, reward;
-};
-
-bool compareByEnd(const Project& a, const Project& b) {
-    return a.end < b.end;
+ 
+ll factsum(ll n){
+    return (n * (n + 1)) / 2;
 }
 
-int main() {
-    int n;
-    cin >> n;
-
-    vector<Project> projects(n);
-    for (int i = 0; i < n; ++i) {
-        cin >> projects[i].start >> projects[i].end >> projects[i].reward;
+bool in(ll item, vector<ll> array){
+    for (ll i : array){
+        if (item == i){
+            return true;
+        }
     }
+    return false;
+}
 
-    sort(projects.begin(), projects.end(), compareByEnd);
-
-    vector<long long> ends;
-    for (auto& p : projects) {
-        ends.push_back(p.end);
+std::pair<vector<ll>, vector<ll>> findsum(ll n, ll sum){
+    vector<ll> r;
+    vector<ll> others;
+    ll counter = n;
+    while (counter > 0){
+        if (sum - counter >= 0 && sum != 0){
+            sum -= counter;
+            r.push_back(counter);
+        }
+        else {
+            others.push_back(counter);
+        }
+        counter--;
     }
+    return {r, others};
+}
 
-    vector<long long> dp(n);
+std::pair<vector<ll>, vector<ll>> TwoSets(ll n){
+    ll sum = factsum(n);
+    if (sum % 2 == 1) return {{}, {}};
+    auto sumv = findsum(n, sum / 2);
+    vector<ll> rnums = sumv.second;
 
-    for (int i = 0; i < n; ++i) {
-        int j = lower_bound(ends.begin(), ends.end(), projects[i].start) - ends.begin() - 1;
-
-        long long bestBefore = (j >= 0 ? dp[j] : 0);
-        dp[i] = max((i > 0 ? dp[i - 1] : 0), bestBefore + projects[i].reward);
+    std::pair<vector<ll>, vector<ll>> r;
+    r.first = sumv.first;
+    r.second = rnums;
+    return r;
+}
+ 
+ 
+int main(){
+    ll n;
+ 
+    input(&n);
+    auto r = TwoSets(n);
+    if (r.first.size() == 0){
+        print("NO");
     }
-
-    cout << dp[n - 1] << "\n";
-
+    else {
+        print("YES");
+        print(r.first.size());
+        for (ll i : r.first){
+            std::cout << i << ' ';
+        }
+        print("");
+        print(r.second.size());
+        for (ll i : r.second){
+            std::cout << i << ' ';
+        }
+    }
     return 0;
 }
