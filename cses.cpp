@@ -12,15 +12,6 @@ ll factsum(ll n){
     return (n * (n + 1)) / 2;
 }
 
-bool in(ll item, vector<ll> array){
-    for (ll i : array){
-        if (item == i){
-            return true;
-        }
-    }
-    return false;
-}
-
 std::pair<vector<ll>, vector<ll>> findsum(ll n, ll sum){
     vector<ll> r;
     vector<ll> others;
