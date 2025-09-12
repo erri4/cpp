@@ -1,19 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <algorithm>
-#include <array>
-#include <cmath>
 #include <fstream>
 
-#define print(data) (std::cout << data << '\n')
-#define input(var) (std::cin >> var)
-
-using ll = long long;
 using str = std::string;
-using std::vector;
-using std::pair;
-using std::array;
-using std::sort;
 
 int main(int argc, char *argv[]){
     str filept1 = R"delimiter(#include <iostream>
