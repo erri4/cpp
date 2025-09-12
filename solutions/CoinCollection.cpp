@@ -14,13 +14,6 @@ using std::pair;
 using std::array;
 using std::sort;
 
-template<typename T1, typename T2, typename T3>
-struct trio{
-    T1 first;
-    T2 second;
-    T3 third;
-};
-
 
 ll CoinCollection(vector<ll> numbers){
     ll max = 0;
