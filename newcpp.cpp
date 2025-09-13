@@ -1,8 +1,29 @@
 #include <fstream>
+#include <iostream>
+
+#define print(data) (std::cout << data)
 
 using str = std::string;
 
 int main(int argc, char *argv[]){
+    str helpstr = R"(Usage: newcpp filename
+
+  Create a new c++ file from hardcoded template.
+
+positional arguments:
+  filename                  Name of the new c++ file.
+
+Options:
+  -h, --help                Show this message and exit.
+)";
+if (argc == 1){
+    print(helpstr);
+    return 0;
+}
+if (static_cast<str>(argv[1]) == static_cast<str>("-h") || static_cast<str>(argv[1]) == static_cast<str>("--help")){
+    print(helpstr);
+    return 0;
+}
     str filept1 = R"delimiter(#include <iostream>
 #include <vector>
 #include <algorithm>
