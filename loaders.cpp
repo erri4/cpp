@@ -1,20 +1,11 @@
-#include <iostream>
-#include <vector>
-#include <thread>
-#include <chrono>
-#include <cmath>
+#include "loaders.h"
 
-#define print(data) (std::cout << data << '\n')
 #define println(data) (std::cout << data)
-#define input(var) (std::cin >> var)
 
-using ll = long long;
 using str = std::string;
-using std::vector;
-using std::pair;
 using std::floor;
 
-void spin(std::chrono::duration<double> framerate = std::chrono::milliseconds(200)){
+void loaders::spin(std::chrono::duration<double> framerate){
     char cycle[4] = {'/', '-', '\\', '|'};
     int i = 0;
     while (true){
@@ -26,7 +17,7 @@ void spin(std::chrono::duration<double> framerate = std::chrono::milliseconds(20
     }
 }
 
-str barline(int percent, int dashes = 25, bool percentview = true){
+str loaders::barline(int percent, int dashes, bool percentview){
     int bars = floor(percent / (100 / dashes));
     int spaces = dashes - bars;
     str line = "\r[";
@@ -101,7 +92,7 @@ str barline(int percent, int dashes = 25, bool percentview = true){
     return line;
 }
 
-void loadbarview(std::chrono::duration<double> framerate = std::chrono::milliseconds(200), int dashes = 25){
+void loaders::loadbarview(std::chrono::duration<double> framerate, int dashes){
     for (int percent = 0; percent <= 100; percent++){
         auto line = barline(percent, dashes);
         println(line);
@@ -109,7 +100,7 @@ void loadbarview(std::chrono::duration<double> framerate = std::chrono::millisec
     }
 }
 
-void loadbarnview(std::chrono::duration<double> framerate = std::chrono::milliseconds(200), int dashes = 25){
+void loaders::loadbarnview(std::chrono::duration<double> framerate, int dashes){
     int bars = 0;
     for (int percent = 0; percent <= 100; percent++){
         if (bars != floor(percent / (100 / dashes))){
@@ -119,9 +110,4 @@ void loadbarnview(std::chrono::duration<double> framerate = std::chrono::millise
         }
         std::this_thread::sleep_for(framerate);
     }
-}
-
-int main(){
-    loadbarview();
-    return 0;
 }
