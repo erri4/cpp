@@ -1,9 +1,25 @@
 #include <fstream>
 #include <iostream>
-
-#define print(data) (std::cout << data)
+#include <windows.h>
 
 using str = std::string;
+
+void copyToClipboard(const str& s) {
+    OpenClipboard(nullptr);
+    EmptyClipboard();
+    HGLOBAL hg = GlobalAlloc(GMEM_MOVEABLE, s.size() + 1);
+    if (!hg) {
+        CloseClipboard();
+        return;
+    }
+    memcpy(GlobalLock(hg), s.c_str(), s.size() + 1);
+    GlobalUnlock(hg);
+    SetClipboardData(CF_TEXT, hg);
+    CloseClipboard();
+    GlobalFree(hg);
+}
+
+#define print(data) (std::cout << data)
 
 int main(int argc, char *argv[]){
     str helpstr = R"(Usage: newcpp filename
@@ -54,5 +70,6 @@ int main(){
     outfile.close();
     std::ofstream exe (static_cast<str>(argv[1]) + ".exe");
     exe.close();
+    copyToClipboard("rm .\\" + static_cast<str>(argv[1]) + ".exe; c++ -o " + static_cast<str>(argv[1]) + " .\\" + static_cast<str>(argv[1]) + ".cpp; .\\" + static_cast<str>(argv[1]) + ".exe");
     return 0;
 }
