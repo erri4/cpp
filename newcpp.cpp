@@ -55,6 +55,7 @@ using std::vector;
 using std::pair;
 using std::array;
 using std::sort;
+using std::max;
 
 void )delimiter";
     str filept2 = R"delimiter((){}
