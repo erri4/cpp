@@ -1,0 +1,43 @@
+1.
+    a. no, for n<10 algo. b is better
+    b. yes.
+        [a, b, c]
+        [d, e, f]
+        [g, h, i]
+
+        if the first line will be changed then f<c or e<b or d<a
+        f<c:
+            if f>=b then it will stay ordered, otherwise, f<b => e<=f<b and e swaps b and it stays ordered
+        e<b:
+            if e>=a then it will stay ordered, otherwise, e<a => d<=e<a and d swaps a and it stays ordered
+        d<a:
+            swaps and stays ordered
+
+        same for the other lines and sizes
+
+    c. O(logn) = O(log^2(n))
+        no.
+        for n<10 log^2(n) is better because logn<1 so log^2(n) is smaller
+    d. yes
+        O(log_5(n))=O(1/log_3(5) * log_3(n)) = O(log_3(n))
+    e. yes
+        O(log(n^2))=O(2logn)=O(logn)
+    f. no
+        O(2^n)=O((3^log_3(2))^n)=O(3^(log_3(2)n))
+    g. no
+        O(nlogn)=O(log(n^n))
+
+    
+2.
+    a. O(nlogx)
+        in the for loop it runs n times, and the for loop runs logx times
+    b. O(xlogx)
+        same as a but the for loop is x times
+    c. O(n*10*5*logx)=O(nlogn)
+
+3. tommy's algorithm is O(nlogn + m^2)
+    he will get 55 points
+
+
+
+cses username: Erri4
