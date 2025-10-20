@@ -2,9 +2,6 @@
 
 #define println(data) (std::cout << data)
 
-using str = std::string;
-using std::floor;
-
 void loaders::spin(std::chrono::duration<double> framerate){
     char cycle[4] = {'/', '-', '\\', '|'};
     int i = 0;
