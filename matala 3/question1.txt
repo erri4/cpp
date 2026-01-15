@@ -1,0 +1,24 @@
+if the length of the array is 1 return 0
+if the first item is 0 return "no way"
+
+set max reach to the first item
+set steps to the first item
+set jumps to 1
+
+set i to 1
+if i is n-1 return jumps
+
+max reach = max{max reach, i + A[i]}
+steps = steps - 1
+
+if steps is 0:
+    jumps = jumps + 1
+    if i >= max reach:
+        return "no way"
+    steps = maxr each - i
+
+return "no way"
+
+
+time complexity: O(n)
+space complexity: O(n)

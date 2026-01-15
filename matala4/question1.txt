@@ -1,0 +1,4 @@
+if there is no importance for time or money or anything like that, we can just sort the list
+and add algorithms until we get to the time limit
+
+time complexity: O(nlogn) because we sort

@@ -1,0 +1,10 @@
+bottom up:
+we initialize a vector (dp) with the size of the stairway where dp[i] is the best way to get to the i'th stair
+
+dp[0] is the (only) way to get to stair 0,
+dp[1] is min{dp[0], stairs[1]}
+dp[2] is min{dp[0], dp[1], stairs[2]}
+dp[i] is min{dp[i - 3], dp[i - 2], dp[i - 1], stairs[i]}
+
+time complexity: O(n) because we check every cell 1 time
+space complexity: O(n) because dp.size() = stairs.size()

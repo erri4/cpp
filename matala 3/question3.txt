@@ -1,0 +1,11 @@
+create a matrix (dp) with the same size, and in cells with 0s put in the dp 0,
+in cells with 1s put -1 in the dp.
+create a queue and add all the cells with 0s to it,
+while the queue is not empty pop cell (i, j) for every valid neighbor of (i, j)
+if dp[neighbor] > dp[i][j] + 1 then
+set dp[neighbor] to dp[i][j] + 1 and push the neighbor into the queue
+return dp
+
+
+time complexity: O(n) because we check every cell maximum of 4 times
+space complexity: O(n) because size of dp is the same size as the given matrix, and so is the queue

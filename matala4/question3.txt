@@ -1,0 +1,5 @@
+first we initialize a vector for visited points,
+then for every point on the graph if it is not in visited, scan all the points near it using bfs or dfs, and add one to the counter if all the discovered points were new (not in visited).
+
+time complexity: O(n)
+we iterate on all the points, but it is not O(n^2) because if we already visited a point we break the loop immidietly.
